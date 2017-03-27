@@ -1,9 +1,11 @@
-package com.unionpay.marcus;
+package com.unionpay.marcus.bsdiff;
+
+import com.unionpay.marcus.basic.fileDiffToolInterface;
 
 /**
  * Created by marcus on 17/3/27.
  */
-public class GoogleDiffMatchTool implements fileDiffToolInterface {
+public class BsdiffTool implements fileDiffToolInterface {
     @Override
     public void diff(String filePath, String filePath2, String outputFileName) {
 
