@@ -1,25 +1,23 @@
 package com.unionpay.marcus;
 
 import com.unionpay.marcus.basic.FileDiffToolInterface;
+import com.unionpay.marcus.bsdiff.BsdiffTool;
 import com.unionpay.marcus.google.GoogleDiffMatchTool;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code
+
+
         System.out.println(">> Start Compare ...");
         FileDiffToolInterface googleTool = new GoogleDiffMatchTool();
-        // googleTool.diff("common_package_min.jsbundle","rn_upwallet_demo_all_min.jsbundle","rn_upwallet_demo_all_min_patch_by_google.txt");
-        // googleTool.patch("common_package_min.jsbundle","rn_upwallet_demo_all_min_new.jsbundle","rn_upwallet_demo_all_min_patch_by_google.txt");
-
-        // googleTool.diff("123.txt","abc.txt","test_patch.txt");
-        // googleTool.patch("123.txt","test_output.txt","test_patch.txt");
+        FileDiffToolInterface bsdiffTool = new BsdiffTool();
 
         TestSuit googleTest = new TestSuit(googleTool,
                 "common_package_min.jsbundle",
                 "rn_upwallet_demo_all_min.jsbundle",
                 "rn_upwallet_demo_all_min_patch_by_google.txt",
-                "rn_upwallet_demo_all_min_new.jsbundle"
+                "rn_upwallet_demo_all_min_new_by_google.jsbundle"
                 );
         googleTest.doTest();
 
@@ -27,9 +25,26 @@ public class Main {
                 "common_package_min.jsbundle",
                 "helloworld_all_min.jsbundle",
                 "helloworld_all_min_patch_by_google.txt",
-                "helloworld_all_min_new.jsbundle"
+                "helloworld_all_min_new_by_google.jsbundle"
         );
         googleTest2.doTest();
+
+
+        TestSuit bsdiffTest1 = new TestSuit(bsdiffTool,
+                "common_package_min.jsbundle",
+                "helloworld_all_min.jsbundle",
+                "helloworld_all_min_patch_by_bsdiff.patch",
+                "helloworld_all_min_new_by_bsdiff.jsbundle"
+        );
+        bsdiffTest1.doTest();
+
+        TestSuit bsdiffTest2 = new TestSuit(googleTool,
+                "common_package_min.jsbundle",
+                "rn_upwallet_demo_all_min.jsbundle",
+                "rn_upwallet_demo_all_min_patch_by_bsdiff.txt",
+                "rn_upwallet_demo_all_min_new_by_bsdiff.jsbundle"
+        );
+        bsdiffTest2.doTest();
 
         System.out.println(">> Stop Compare ...");
 
