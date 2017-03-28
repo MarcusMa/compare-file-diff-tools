@@ -74,7 +74,7 @@ public class TestSuit {
         System.out.println("B File: \t" + mCompareFilePath + "\t size: " + String.valueOf(mCompareFileSize) + " bytes");
         System.out.println("patch File: \t" + mPatchFilePath + "\t size: " + String.valueOf(mPathFileSize) + " bytes");
         System.out.println("Exec Diff Time: \t" + execDiffTime + " ms" );
-        System.out.println("Exec Patch Time: \t" + execPathTime +  "ms");
+        System.out.println("Exec Patch Time: \t" + execPathTime +  " ms");
     }
 
 }

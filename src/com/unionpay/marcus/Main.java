@@ -13,6 +13,15 @@ public class Main {
         FileDiffToolInterface googleTool = new GoogleDiffMatchTool();
         FileDiffToolInterface bsdiffTool = new BsdiffTool();
 
+
+        TestSuit bsdiffTest2 = new TestSuit(bsdiffTool,
+                "common_package_min.jsbundle",
+                "rn_upwallet_demo_all_min.jsbundle",
+                "rn_upwallet_demo_all_min_patch_by_bsdiff.patch",
+                "rn_upwallet_demo_all_min_new_by_bsdiff.jsbundle"
+        );
+        bsdiffTest2.doTest();
+
         TestSuit googleTest = new TestSuit(googleTool,
                 "common_package_min.jsbundle",
                 "rn_upwallet_demo_all_min.jsbundle",
@@ -20,15 +29,6 @@ public class Main {
                 "rn_upwallet_demo_all_min_new_by_google.jsbundle"
                 );
         googleTest.doTest();
-
-        TestSuit googleTest2 = new TestSuit(googleTool,
-                "common_package_min.jsbundle",
-                "helloworld_all_min.jsbundle",
-                "helloworld_all_min_patch_by_google.txt",
-                "helloworld_all_min_new_by_google.jsbundle"
-        );
-        googleTest2.doTest();
-
 
         TestSuit bsdiffTest1 = new TestSuit(bsdiffTool,
                 "common_package_min.jsbundle",
@@ -38,13 +38,13 @@ public class Main {
         );
         bsdiffTest1.doTest();
 
-        TestSuit bsdiffTest2 = new TestSuit(googleTool,
+        TestSuit googleTest2 = new TestSuit(googleTool,
                 "common_package_min.jsbundle",
-                "rn_upwallet_demo_all_min.jsbundle",
-                "rn_upwallet_demo_all_min_patch_by_bsdiff.txt",
-                "rn_upwallet_demo_all_min_new_by_bsdiff.jsbundle"
+                "helloworld_all_min.jsbundle",
+                "helloworld_all_min_patch_by_google.txt",
+                "helloworld_all_min_new_by_google.jsbundle"
         );
-        bsdiffTest2.doTest();
+        googleTest2.doTest();
 
         System.out.println(">> Stop Compare ...");
 
