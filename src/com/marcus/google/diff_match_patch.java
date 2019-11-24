@@ -1,4 +1,4 @@
-package com.unionpay.marcus.google;
+package com.marcus.google;
 
 /*
  * Diff Match and Patch

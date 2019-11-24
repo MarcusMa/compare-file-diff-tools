@@ -1,18 +1,28 @@
-package com.unionpay.marcus.google;
+package com.marcus.google;
 
-import com.unionpay.marcus.basic.FileDiffToolInterface;
-import com.unionpay.marcus.util.FileUtils;
+import com.marcus.basic.IFileDiffTool;
+import com.marcus.util.FileUtils;
 
-import java.util.Calendar;
+import java.io.File;
 import java.util.LinkedList;
 
 /**
  * Created by marcus on 17/3/27.
  */
-public class GoogleDiffMatchTool implements FileDiffToolInterface {
+public class GoogleDiffMatchTool implements IFileDiffTool {
     @Override
     public String getToolName() {
         return "google-diff-match-patch";
+    }
+
+    @Override
+    public void diff(File file, File file2, File outputFile) {
+        diff(file.getAbsolutePath(), file2.getAbsolutePath(), outputFile.getAbsolutePath());
+    }
+
+    @Override
+    public void path(File file, File outputFile, File patchFile) {
+        patch(file.getAbsolutePath(), outputFile.getAbsolutePath(), patchFile.getAbsolutePath());
     }
 
     @Override
@@ -31,7 +41,7 @@ public class GoogleDiffMatchTool implements FileDiffToolInterface {
         diff_match_patch dmp = new diff_match_patch();
         String commonStr = FileUtils.readFileContent(filePath);
         String patchesStr = FileUtils.readFileContent(patchPath);
-        LinkedList<diff_match_patch.Patch> patches = (LinkedList<diff_match_patch.Patch>)dmp.patch_fromText(patchesStr);
+        LinkedList<diff_match_patch.Patch> patches = (LinkedList<diff_match_patch.Patch>) dmp.patch_fromText(patchesStr);
         Object[] results = dmp.patch_apply(patches, commonStr);
         String fileContent = String.valueOf(results[0]);
         FileUtils.writeContextToFile(fileContent, outputFilePath);

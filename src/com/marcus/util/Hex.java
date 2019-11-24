@@ -1,4 +1,4 @@
-package com.unionpay.marcus.util;
+package com.marcus.util;
 
 /**
  * Created by marcus on 17/3/27.

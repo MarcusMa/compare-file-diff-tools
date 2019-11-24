@@ -1,6 +1,6 @@
-package com.unionpay.marcus;
+package com.marcus;
 
-import com.unionpay.marcus.basic.FileDiffToolInterface;
+import com.marcus.basic.IFileDiffTool;
 
 import java.io.File;
 import java.util.Calendar;
@@ -10,7 +10,7 @@ import java.util.Calendar;
  */
 public class TestSuit {
 
-    private FileDiffToolInterface mTool;
+    private IFileDiffTool mTool;
     private String mCommonFilePath;
     private String mCompareFilePath;
     private String mPatchFilePath;
@@ -22,7 +22,11 @@ public class TestSuit {
     private long mCompareFileSize;
     private long mPathFileSize;
 
-    public TestSuit(FileDiffToolInterface tools, String commonFilePath, String compareFilePath, String patchFilePath, String outputFilePath){
+    public TestSuit(IFileDiffTool tools,
+                    String commonFilePath,
+                    String compareFilePath,
+                    String patchFilePath,
+                    String outputFilePath){
         mTool = tools;
         mCommonFilePath = commonFilePath;
         mCompareFilePath = compareFilePath;
